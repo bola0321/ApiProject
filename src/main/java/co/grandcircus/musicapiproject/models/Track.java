@@ -10,6 +10,7 @@ public class Track {
 	private String title;
 	@JsonProperty("release_date")
 	private String releaseDate;
+	
 	public Integer getId() {
 		return id;
 	}
