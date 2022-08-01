@@ -7,6 +7,6 @@
 <title>Show Artist</title>
 </head>
 <body>
-<h1>Artist selected: ${music.artist.name}</h1>
+<h1>Artist selected: ${data.artist}</h1>
 </body>
 </html>

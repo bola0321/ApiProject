@@ -20,10 +20,10 @@ public class MusicApiService {
 
 	private RestTemplate request = new RestTemplate();
 
-	public List<Music> getMusic(String artist) {
-		String url = "https://api.deezer.com/search?q=artist:\"{artist}\"";
-		MusicResponse response = request.getForObject(url, MusicResponse.class, artist);
-		return response.getMusic();
+	public List<Music> getMusicByArtist(String artist) {
+		String url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=artist" + artist;
+		MusicResponse response = request.getForObject(url, MusicResponse.class);
+		return response.getData();
 	}
 
 	public List<Track> getTracksforDecade(Integer year) {
