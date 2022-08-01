@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Music {
 	
-	private Integer id;
+	private String id;
 	private String title;
 	private List<Artist> artist;
 	private List<Album> album;
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -33,8 +33,7 @@ public class Music {
 	public void setAlbum(List<Album> album) {
 		this.album = album;
 	}
-	public Music(Integer id, String title, List<Artist> artist, List<Album> album) {
-		super();
+	public Music(String id, String title, List<Artist> artist, List<Album> album) {
 		this.id = id;
 		this.title = title;
 		this.artist = artist;

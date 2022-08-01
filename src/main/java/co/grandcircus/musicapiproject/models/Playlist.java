@@ -1,20 +1,17 @@
 package co.grandcircus.musicapiproject.models;
 
-
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
 
 public class Playlist {
 	@Id
-	private Integer id;
+	private String id;
 	private String title;
-	private Data<List<Track>> tracks;
+	private TrackList tracks;
 	
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -23,10 +20,10 @@ public class Playlist {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Data<List<Track>> getTracks() {
+	public TrackList getTracks() {
 		return tracks;
 	}
-	public void Data(Data<List<Track>> tracks) {
+	public void setTracks(TrackList tracks) {
 		this.tracks = tracks;
 	}
 	
