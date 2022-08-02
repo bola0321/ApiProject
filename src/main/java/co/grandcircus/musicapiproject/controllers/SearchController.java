@@ -23,7 +23,7 @@ public class SearchController {
 	
 	@PostMapping("searchByArtist")
 	public String displaySearch(Model model, @RequestParam String artist) {
-		model.addAttribute("music", musicService.getMusicByArtist(artist));
+		model.addAttribute("music", musicService.SearchQuery(artist));
 		
 		return "searchByArtist";
 	}
