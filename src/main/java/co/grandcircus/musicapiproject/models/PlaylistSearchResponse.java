@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PlaylistSearchResponse {
 
 	@JsonProperty("data")
-	private List<Playlist> playlistSearchList;
+	private List<PlaylistFromSearch> playlistSearchList;
 
-	public List<Playlist> getPlaylistSearchList() {
+	public List<PlaylistFromSearch> getPlaylistSearchList() {
 		return playlistSearchList;
 	}
 
-	public void setPlaylistSearchList(List<Playlist> playlistSearchList) {
+	public void setPlaylistSearchList(List<PlaylistFromSearch> playlistSearchList) {
 		this.playlistSearchList = playlistSearchList;
 	}
 

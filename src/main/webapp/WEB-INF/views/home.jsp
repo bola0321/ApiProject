@@ -18,5 +18,16 @@
 		<input class="button" type="submit" /> <input class="button"
 			type="reset" value="Reset" />
 	</form>
+	<br>
+		<form class="form" action="/search-by-decade" method="post">
+		<table>
+			<tr>
+				<td>Decade: <input type="number" name="year"
+					placeholder="1980"></td>
+			</tr>
+		</table>
+		<input class="button" type="submit" /> <input class="button"
+			type="reset" value="Reset" />
+	</form>
 </body>
 </html>

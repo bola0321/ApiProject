@@ -1,12 +1,8 @@
 package co.grandcircus.musicapiproject.models;
 
-import org.springframework.data.annotation.Id;
-
-public class Playlist {
-	@Id
+public class PlaylistFromSearch {
 	private String id;
 	private String title;
-	private PlaylistTrackList tracks;
 	
 	public String getId() {
 		return id;
@@ -20,14 +16,5 @@ public class Playlist {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public PlaylistTrackList getTracks() {
-		return tracks;
-	}
-	public void setTracks(PlaylistTrackList tracks) {
-		this.tracks = tracks;
-	}
-	
-	
-	
 
 }
