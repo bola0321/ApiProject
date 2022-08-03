@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<td>Track: <input type="text" name="track"
-					placeholder="track"></td>
+					placeholder="Song title"></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"
@@ -28,12 +28,17 @@
 				<td>Location: <input type="text" name="searchTerm"
 					placeholder="eg, Detroit"></td>
 			</tr>
-		
-		<form class="form" action="/search-by-decade" method="post">
+		</table>
+		<input class="button" type="submit" /> <input class="button"
+			type="reset" value="Reset" />
+		</form>
+	<br>
+	<br>	
+	<form class="form" action="/search-by-decade" method="post">
 		<table>
 			<tr>
 				<td>Decade: <input type="number" name="year"
-					placeholder="1980"></td>
+					placeholder="eg, 1980, 1990..."></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"

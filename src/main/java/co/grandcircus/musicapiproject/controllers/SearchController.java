@@ -56,9 +56,13 @@ public class SearchController {
 		return "confirmAddtoFavorites";
 		
 	}
+	
 	@RequestMapping("confirmAddtoFavorites")
 	public String showConfirmAddtoFavorites() {
 		return "confirmAddtoFavorites";
+		
+	}
+	
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
 		if (!(year >=1950 && year< 2022)) {
