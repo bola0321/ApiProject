@@ -1,5 +1,6 @@
 package co.grandcircus.musicapiproject.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -10,8 +11,9 @@ public class Track {
 	@Id
 	private String id;
 	private String title;
-	//@JsonProperty("artist")
-	//private List<Artist> artistInfo;
+	@JsonProperty("artist")
+	private Artist artistInfo;
+//	private List<Artist> artistInfo = new ArrayList<>();
 	@JsonProperty("release_date")
 	private String releaseDate;
 	
@@ -39,6 +41,12 @@ public class Track {
 //	public void setArtistInfo(List<Artist> artistInfo) {
 //		this.artistInfo = artistInfo;
 //	}
+	public Artist getArtistInfo() {
+		return artistInfo;
+	}
+	public void setArtistInfo(Artist artistInfo) {
+		this.artistInfo = artistInfo;
+	}
 	
 	
 	

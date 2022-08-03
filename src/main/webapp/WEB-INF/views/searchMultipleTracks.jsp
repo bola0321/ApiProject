@@ -13,7 +13,9 @@
 
 <ul>
 	<c:forEach var= "searchTermPlace" items= "${searchMultipleTracks.data}">
-		<li>${searchTermPlace.title}</li>
+		<li>${searchTermPlace.title} - by ${searchTermPlace.artistInfo.name}</li>
+		<br>
+		
 	
 
 
