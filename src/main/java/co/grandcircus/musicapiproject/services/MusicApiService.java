@@ -1,21 +1,27 @@
 package co.grandcircus.musicapiproject.services;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
-
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import co.grandcircus.musicapiproject.models.Music;
 import co.grandcircus.musicapiproject.models.MusicResponse;
+import co.grandcircus.musicapiproject.models.Search;
+import co.grandcircus.musicapiproject.models.Track;
+import co.grandcircus.musicapiproject.models.TrackList;
 
 
 @Service
@@ -23,39 +29,58 @@ public class MusicApiService {
 
 	private RestTemplate restTemplate = new RestTemplate();
 
-
-	String url = "https://deezerdevs-deezer.p.rapidapi.com";
+	//String url = "https://api.deezer.com/{type}{artist}";
+	//String urlSearch = "https://deezerdevs-deezer.p.rapidapi.com/search?q={data}";
+	
+	String url = "https://deezerdevs-deezer.p.rapidapi.com/";
 
 
 	private static HttpEntity formatRequest() {
 	
+
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
 		header.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-		
+
 		header.set("X-RapidAPI-Key", "4a88914586mshcb65904c49f7ed4p18e303jsnfd5efee90df3");
 		header.set("X-RapidAPI-Host", "deezerdevs-deezer.p.rapidapi.com");
+
+		HttpEntity request = new HttpEntity<>(header);
 		
-		HttpEntity request = new HttpEntity(header);
+	  
 		return request;
 	}
 	
-	public List<Music> getData(String search) {
-		HttpEntity request = formatRequest();
+	public MusicResponse getGeoData(String search) {
+		HttpEntity<MusicResponse> request = formatRequest();
 		
-		ResponseEntity<MusicResponse> response = restTemplate.exchange(url, HttpMethod.GET, request, MusicResponse.class);
-		return response.getBody().getData();
+		Map<String, String> params = new HashMap<>();
+		params.put("search", search);
+
+		
+		ResponseEntity<MusicResponse> response = restTemplate.exchange(url + "/search?q={search}", HttpMethod.GET, request, MusicResponse.class, params);	
+		return response.getBody();
 	
 	}
-	
 
+	public Track getSingleTrack(String track) {
+		Map<String, String> params = new HashMap<>();
+		params.put("track", track);
+		Track response = restTemplate.exchange(url + "/track/{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
+		
+		return response;
+		
+	}
+	
 	
 	
 //	public List<Music> getMusicByArtist(String artist) {
-//		String url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=artist" + artist;
-//		MusicResponse response = request.getForObject(url, MusicResponse.class);
-//		return response.getData();
-//	}
+//		HttpEntity request = formatRequest();
+//		String type = "search?q=";
+//		//String url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=artist{artist}";
+//		ResponseEntity<MusicResponse> response = restTemplate.exchange(url, HttpMethod.GET, request, MusicResponse.class, type, artist);
+//		return response.getBody().getData();
+//		}
 //
 //	public List<Track> getTracksforDecade(Integer year) {
 //		String url = "https://api.deezer.com/search/playlist?q={year}";
