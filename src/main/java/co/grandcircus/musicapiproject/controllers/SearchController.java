@@ -20,46 +20,24 @@ public class SearchController {
 	
 	@RequestMapping("/")
 	public String showHome() {
-		//model.addAttribute("artist", artist);
-//		model.addAttribute("music", musicService.getMusic("Rihanna"));
 		return "home";
 	}
 	
-//	@PostMapping("searchByArtist")
-//	public String displaySearch(Model model, @RequestParam String artist) {
-//	//	model.addAttribute("artist", artist);
-//		model.addAttribute("music", musicService.getDataByArtist(artist));
-//		
-//		return "searchByArtist";
-//	}
-	
-	@PostMapping("/geoSearch")
-	public String geographicalSearch(String search, Model model) {
-		model.addAttribute("geoSearch", musicService.getGeoData(search));
-		return "geoSearch";
-	}
 	
 	@PostMapping("searchByTrack") 
 		public String showSearchByTrack(String track, Model model) {
 		model.addAttribute("track", track);
 		model.addAttribute("searchByTrack", musicService.getSingleTrack(track));
-		
-		
-			return "searchByTrack";
+		return "searchByTrack";
 		}
+
 	
-	@RequestMapping("searchByPlaceHome")
-	public String showLocalSearchHome() {
-		return "searchByPlaceHome";
-	}
-	
-	@PostMapping("searchMultipleTracks")
+	@PostMapping("displayGeographicalSearch")
 	public String searchMultipleTracks(String searchTerm, Model model) {
 		model.addAttribute("searchTerm", searchTerm);
-		model.addAttribute("searchMultipleTracks", musicService.getMultipleTracks(searchTerm));
+		model.addAttribute("displayGeographicalSearch", musicService.getMultipleTracks(searchTerm));
 		
-		
-		return "searchMultipleTracks";
+		return "displayGeographicalSearch";
 	}
 	
 	}

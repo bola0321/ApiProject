@@ -12,16 +12,16 @@
 <h1>Geographical Playlist</h1>
 
 <ul>
-	<c:forEach var= "searchTermPlace" items= "${searchMultipleTracks.data}">
-		<li>${searchTermPlace.title} - by ${searchTermPlace.artistInfo.name}</li>
+	<c:forEach var= "searchTerm" items= "${displayGeographicalSearch.data}">
+		<li>${searchTerm.title} - by ${searchTerm.artistInfo.name}</li>
 		<br>
+		</c:forEach>
 		
-	
-
-
-		
-	</c:forEach>
 </ul>
+
+
+
+<a href="/">Back</a>
 </body>
 </html>
 

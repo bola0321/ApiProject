@@ -9,19 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Geographical Playlist</h1>
 
-<ul>
-	<c:forEach var= "geoSearchVar" items= "${geoSearch}">
-		<li>${geoSearchVar.id}</li>
-		<li>${geoSearchVar.title}</li>
-		<li>${geoSearchVar.link}</li>
-		<li>${geoSearchVar.duration}</li>
-		<li>${geoSearchVar.artist}</li>
-		<li>${geoSearchVar.album}</li>
-		
-	</c:forEach>
-</ul>
 </body>
 </html>
-

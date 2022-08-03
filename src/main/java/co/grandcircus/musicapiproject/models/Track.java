@@ -1,16 +1,16 @@
 package co.grandcircus.musicapiproject.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@Document("favorites")
 public class Track {
 	@Id
 	private String id;
 	private String title;
+	// had to switch List<Artist> to just a property of type Artist
 	@JsonProperty("artist")
 	private Artist artistInfo;
 //	private List<Artist> artistInfo = new ArrayList<>();

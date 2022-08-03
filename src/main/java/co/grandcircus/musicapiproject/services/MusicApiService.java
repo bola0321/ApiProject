@@ -57,24 +57,23 @@ public class MusicApiService {
 	
 	}
 
-	public Track getSingleTrack(String track) {
+//	public Track getSingleTrack(String track) {
+//		Map<String, String> params = new HashMap<>();
+//		params.put("track", track);
+//		Track response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
+//		
+//		return response;
+//		
+//	}
+	
+	public TrackList getSingleTrack(String track) {
 		Map<String, String> params = new HashMap<>();
 		params.put("track", track);
-		Track response = restTemplate.exchange(url + "/track/{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
+		TrackList response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
 		
 		return response;
 		
 	}
-	
-	public Track getSingleTrack2(String track) {
-		Map<String, String> params = new HashMap<>();
-		params.put("track", track);
-		Track response = restTemplate.exchange(url + "/track/{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
-		
-		return response;
-		
-	}
-	
 	public TrackList getMultipleTracks(String searchTerm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("searchTerm", searchTerm);
@@ -84,7 +83,9 @@ public class MusicApiService {
 		
 	}
 	
-//	public List<Music> getMusicByArtist(String artist) {
+	
+	
+//	public List<Track> getMusicByArtist(String artist) {
 //		HttpEntity request = formatRequest();
 //		String type = "search?q=";
 //		//String url = "https://deezerdevs-deezer.p.rapidapi.com/search?q=artist{artist}";

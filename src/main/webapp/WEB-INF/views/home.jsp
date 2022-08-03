@@ -9,7 +9,7 @@
 <title>Music Home</title>
 </head>
 <body>
-	<h1>Here. Is. Music.</h1>
+	<h1>Search for Road Trip Music Here</h1>
 	<form class="form" action="/searchByTrack" method="post">
 		<table>
 			<tr>
@@ -20,5 +20,20 @@
 		<input class="button" type="submit" /> <input class="button"
 			type="reset" value="Reset" />
 	</form>
+	<br>
+	<br>
+	<form class="form" action="/displayGeographicalSearch" method="post">
+		<table>
+			<tr>
+				<td>Location: <input type="text" name="searchTerm"
+					placeholder="eg, Detroit"></td>
+			</tr>
+		
+		</table>
+		<input class="button" type="submit" /> <input class="button"
+			type="reset" value="Reset" />
+	</form>
+	
+
 </body>
 </html>
