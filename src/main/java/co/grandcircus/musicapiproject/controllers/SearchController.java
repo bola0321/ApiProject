@@ -47,6 +47,21 @@ public class SearchController {
 		
 			return "searchByTrack";
 		}
+	
+	@RequestMapping("searchByPlaceHome")
+	public String showLocalSearchHome() {
+		return "searchByPlaceHome";
+	}
+	
+	@PostMapping("searchMultipleTracks")
+	public String searchMultipleTracks(String searchTerm, Model model) {
+		model.addAttribute("searchTerm", searchTerm);
+		model.addAttribute("searchMultipleTracks", musicService.getMultipleTracks(searchTerm));
+		
+		
+		return "searchMultipleTracks";
+	}
+	
 	}
 
 

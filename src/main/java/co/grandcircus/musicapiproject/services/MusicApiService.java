@@ -19,9 +19,10 @@ import org.springframework.web.client.RestTemplate;
 
 import co.grandcircus.musicapiproject.models.Music;
 import co.grandcircus.musicapiproject.models.MusicResponse;
-import co.grandcircus.musicapiproject.models.Search;
+
 import co.grandcircus.musicapiproject.models.Track;
 import co.grandcircus.musicapiproject.models.TrackList;
+
 
 
 @Service
@@ -29,9 +30,7 @@ public class MusicApiService {
 
 	private RestTemplate restTemplate = new RestTemplate();
 
-	//String url = "https://api.deezer.com/{type}{artist}";
-	//String urlSearch = "https://deezerdevs-deezer.p.rapidapi.com/search?q={data}";
-	
+
 	String url = "https://deezerdevs-deezer.p.rapidapi.com/";
 
 
@@ -50,9 +49,9 @@ public class MusicApiService {
 	  
 		return request;
 	}
-	// this one is wrong but not completely wrong - mismatch on type asked for and type recieved.
+	// this one is wrong but not completely wrong - mismatch on type asked for and type received.
 	public MusicResponse getGeoData(String search) {
-		HttpEntity<MusicResponse> request = formatRequest();
+		HttpEntity request = formatRequest();
 		
 		Map<String, String> params = new HashMap<>();
 		params.put("search", search);
@@ -72,7 +71,23 @@ public class MusicApiService {
 		
 	}
 	
+	public Track getSingleTrack2(String track) {
+		Map<String, String> params = new HashMap<>();
+		params.put("track", track);
+		Track response = restTemplate.exchange(url + "/track/{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
+		
+		return response;
+		
+	}
 	
+	public TrackList getMultipleTracks(String searchTerm) {
+		Map<String, String> params = new HashMap<>();
+		params.put("searchTerm", searchTerm);
+		TrackList response = restTemplate.exchange(url + "/search?q={searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
+		
+		return response;
+		
+	}
 	
 //	public List<Music> getMusicByArtist(String artist) {
 //		HttpEntity request = formatRequest();
