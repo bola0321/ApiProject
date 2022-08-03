@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Music Home</title>
+<title>Road Trip Music</title>
 </head>
 <body>
-	<h1>Search for Road Trip Music Here</h1>
+	<h1>Build Your Playlists, Select Your Favorites!</h1>
 	<form class="form" action="/searchByTrack" method="post">
 		<table>
 			<tr>
