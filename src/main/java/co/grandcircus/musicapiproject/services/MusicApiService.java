@@ -50,7 +50,7 @@ public class MusicApiService {
 	  
 		return request;
 	}
-	
+	// this one is wrong but not completely wrong - mismatch on type asked for and type recieved.
 	public MusicResponse getGeoData(String search) {
 		HttpEntity<MusicResponse> request = formatRequest();
 		
