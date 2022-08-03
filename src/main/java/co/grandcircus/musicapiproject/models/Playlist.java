@@ -8,6 +8,8 @@ public class Playlist {
 	private String title;
 	private TrackList tracks;
 
+	private PlaylistTrackList tracks;
+	
 	public String getId() {
 		return id;
 	}
@@ -20,10 +22,10 @@ public class Playlist {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public TrackList getTracks() {
+	public PlaylistTrackList getTracks() {
 		return tracks;
 	}
-	public void setTracks(TrackList tracks) {
+	public void setTracks(PlaylistTrackList tracks) {
 		this.tracks = tracks;
 	}
 }

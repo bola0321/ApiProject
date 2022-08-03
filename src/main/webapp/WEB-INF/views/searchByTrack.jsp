@@ -6,16 +6,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Show Artist</title>
+<title>Search By Track</title>
 </head>
 <body>
-<h1>Artist selected:</h1>
+<h2>Search by track plz.</h2>
 <ul>
-	<c:forEach var= "music" items= "${music}">
-		<li>${music.id}</li>
-		<li>${music.track}</li>
-	
-	</c:forEach>
+	<c:forEach var= "searchTerm" items= "${searchByTrack.data}">
+		<li>${searchTerm.title} - by ${searchTerm.artistInfo.name}</li>
+		<br>
+		</c:forEach>
+		
 </ul>
+<a href="/">Back</a>
 </body>
 </html>

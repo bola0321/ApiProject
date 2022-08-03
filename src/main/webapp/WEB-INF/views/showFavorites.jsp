@@ -6,16 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Show Artist</title>
+<title>Insert title here</title>
 </head>
 <body>
-<h1>Artist selected:</h1>
-<ul>
-	<c:forEach var= "music" items= "${music}">
-		<li>${music.id}</li>
-		<li>${music.track}</li>
-	
-	</c:forEach>
-</ul>
+<h2>Show favorites</h2>
+
+
 </body>
 </html>
