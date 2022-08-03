@@ -38,6 +38,10 @@ public class SearchController {
 //		return "searchByDecade";
 //	}
 	
-	
-	
+	@PostMapping("/searchSongsLikeThis")
+	public String searchBySimilarities(float bpm, Model model) {
+		model.addAttribute("bpm", bpm);
+		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
+		return "searchBySimilarities";
+}
 }

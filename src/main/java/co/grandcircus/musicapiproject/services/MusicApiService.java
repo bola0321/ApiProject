@@ -2,9 +2,9 @@ package co.grandcircus.musicapiproject.services;
 
 
 import java.util.Collections;
-
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 
 import co.grandcircus.musicapiproject.models.Music;
 import co.grandcircus.musicapiproject.models.MusicResponse;
+import co.grandcircus.musicapiproject.models.PlaylistSearchResponse;
+import co.grandcircus.musicapiproject.models.TrackList;
 
 
 @Service
@@ -109,6 +111,17 @@ public class MusicApiService {
 //		}
 //		return completeDecadeList;
 //	}
+	public TrackList getAllTracks(Float bpm) {
+		Map<String, String> params = new HashMap<>();
+		params.put("bpm", bpm.toString());
+
+		TrackList response = restTemplate.exchange(url + "/search?q=track:{bpm}", HttpMethod.GET,
+				formatRequest(), TrackList.class, params).getBody();
+		return response;
+	}
+
+
+
 
 }
 
