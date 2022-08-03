@@ -59,6 +59,14 @@ public class SearchController {
 	@RequestMapping("confirmAddtoFavorites")
 	public String showConfirmAddtoFavorites() {
 		return "confirmAddtoFavorites";
+	@PostMapping("/search-by-decade")
+	public String searchByDecade(@RequestParam int year, Model model) {
+		if (!(year >=1950 && year< 2022)) {
+			//TODO: Throw 400 error if not within range(add a range to the JSP as well)
+		}
+		model.addAttribute("decadeTrackList",musicService.getTracksforDecade(year));
+		
+		return "searchByDecade";
 	}
 	
 	}
