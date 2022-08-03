@@ -9,12 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1> Songs Like this... playlist</h1>
+<h1>Songs Like This... Playlist</h1>
+
 <ul>
-	<c:forEach var= "bpm" items= "${searchBySimilarities.data}">
+	<c:forEach var= "bpm" items= "${searchSongsLikeThis.data}">
 		<li>${bpm.title} - by ${bpm.artistInfo.name}</li>
 		<br>
 		</c:forEach>
+		
 </ul>
 </body>
 </html>

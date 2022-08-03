@@ -111,11 +111,11 @@ public class MusicApiService {
 //		}
 //		return completeDecadeList;
 //	}
-	public TrackList getAllTracks(Float bpm) {
+	public TrackList getAllTracks(String bpm) {
 		Map<String, String> params = new HashMap<>();
-		params.put("bpm", bpm.toString());
+		params.put("bpm", bpm);
 
-		TrackList response = restTemplate.exchange(url + "/search?q=track:{bpm}", HttpMethod.GET,
+		TrackList response = restTemplate.exchange(url + "/search?q={bpm}", HttpMethod.GET,
 				formatRequest(), TrackList.class, params).getBody();
 		return response;
 	}

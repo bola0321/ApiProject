@@ -6,7 +6,7 @@ public class Playlist {
 	@Id
 	private String id;
 	private String title;
-	private PlaylistTrackList tracks;
+	private TrackList tracks;
 
 	public String getId() {
 		return id;
@@ -20,10 +20,10 @@ public class Playlist {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public PlaylistTrackList getTracks() {
+	public TrackList getTracks() {
 		return tracks;
 	}
-	public void setTracks(PlaylistTrackList tracks) {
+	public void setTracks(TrackList tracks) {
 		this.tracks = tracks;
 	}
 }

@@ -18,5 +18,20 @@
 		<input class="button" type="submit" /> <input class="button"
 			type="reset" value="Reset" />
 	</form>
+	<br>
+	<br>
+	<form class="form" action="searchSongsLikeThis" method="post">
+		<table>
+			<tr>
+				<td>Location: <input type="text" name="searchTerm"
+					placeholder="eg, Detroit"></td>
+			</tr>
+		
+		</table>
+		<input class="button" type="submit" /> <input class="button"
+			type="reset" value="Reset" />
+	</form>
+	
+	
 </body>
 </html>

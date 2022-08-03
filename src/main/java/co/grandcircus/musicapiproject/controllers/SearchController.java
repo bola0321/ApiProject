@@ -39,9 +39,9 @@ public class SearchController {
 //	}
 	
 	@PostMapping("/searchSongsLikeThis")
-	public String searchBySimilarities(float bpm, Model model) {
+	public String searchBySimilarities(String bpm, Model model) {
 		model.addAttribute("bpm", bpm);
 		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
-		return "searchBySimilarities";
+		return "searchSongsLikeThis";
 }
 }
