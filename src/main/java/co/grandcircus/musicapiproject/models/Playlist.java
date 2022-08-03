@@ -6,6 +6,8 @@ public class Playlist {
 	@Id
 	private String id;
 	private String title;
+	private TrackList tracks;
+
 	private PlaylistTrackList tracks;
 	
 	public String getId() {
@@ -26,8 +28,5 @@ public class Playlist {
 	public void setTracks(PlaylistTrackList tracks) {
 		this.tracks = tracks;
 	}
-	
-	
-	
-
 }
+

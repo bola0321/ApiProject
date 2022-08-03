@@ -97,6 +97,20 @@ public class MusicApiService {
 	
 
 
+//		}
+//		return completeDecadeList;
+//	}
+	public TrackList getAllTracks(String bpm) {
+		Map<String, String> params = new HashMap<>();
+		params.put("bpm", bpm);
+
+		TrackList response = restTemplate.exchange(url + "/search?q={bpm}", HttpMethod.GET,
+				formatRequest(), TrackList.class, params).getBody();
+		return response;
+	}
+
+
+
 	private PlaylistSearchResponse searchByPlaylist(Integer year) {
 		Map<String, String> params = new HashMap<>();
 		params.put("year", year.toString());
