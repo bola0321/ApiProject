@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Songs Like This</title>
 </head>
 <body>
 <h1>Songs Like This... Playlist</h1>

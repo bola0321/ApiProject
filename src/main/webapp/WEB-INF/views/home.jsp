@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
 <title>Road Trip Music</title>
 </head>
 <body>
@@ -14,7 +16,7 @@
 		<table>
 			<tr>
 				<td>Track: <input type="text" name="track"
-					placeholder="track"></td>
+					placeholder="Song title"></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"
@@ -28,12 +30,17 @@
 				<td>Location: <input type="text" name="searchTerm"
 					placeholder="eg, Detroit"></td>
 			</tr>
-		
-		<form class="form" action="/search-by-decade" method="post">
+		</table>
+		<input class="button" type="submit" /> <input class="button"
+			type="reset" value="Reset" />
+		</form>
+	<br>
+	<br>	
+	<form class="form" action="/search-by-decade" method="post">
 		<table>
 			<tr>
-				<td>Decade: <input type="number" name="year"
-					placeholder="1980"></td>
+				<td>Decade: <input type="number" name="year" min="1950" max="2020" step= "10"
+					placeholder="eg, 1980, 1990..." required></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"

@@ -27,5 +27,6 @@ public class Playlist {
 	public void setTracks(PlaylistTrackList tracks) {
 		this.tracks = tracks;
 	}
+	
 }
 

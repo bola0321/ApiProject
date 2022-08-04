@@ -1,15 +1,13 @@
 package co.grandcircus.musicapiproject.models;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Document("favorites")
 public class Track {
-	@Id
+	
 	private String id;
 	private String title;
+	@JsonProperty("title_short")
+	private String titleShort;
 	private int rank;
 	// had to switch List<Artist> to just a property of type Artist
 	@JsonProperty("artist")
@@ -19,6 +17,7 @@ public class Track {
 	private String releaseDate;
 	private Album album;
 	private float bpm;
+
 	
 	public float getBpm() {
 		return bpm;
@@ -44,12 +43,7 @@ public class Track {
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-//	public List<Artist> getArtistInfo() {
-//		return artistInfo;
-//	}
-//	public void setArtistInfo(List<Artist> artistInfo) {
-//		this.artistInfo = artistInfo;
-//	}
+
 	public Artist getArtistInfo() {
 		return artistInfo;
 	}
@@ -59,7 +53,9 @@ public class Track {
 	public int getRank() {
 		return rank;
 	}
+	
 	public void setRank(int rank) {
+		
 		this.rank = rank;
 	}
 	public Album getAlbum() {
@@ -69,6 +65,12 @@ public class Track {
 		this.album = album;
 	}
 	
+	public String getTitleShort() {
+		return titleShort;
+	}
+	public void setTitleShort(String titleShort) {
+		this.titleShort = titleShort;
+	}
 	public Track() {
 		
 	}

@@ -6,17 +6,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
 <title>Search By Track</title>
 </head>
 <body>
-<h2>Search by track plz.</h2>
-<ul>
-	<c:forEach var= "searchTerm" items= "${searchByTrack.data}">
-		<li>${searchTerm.title} - by ${searchTerm.artistInfo.name}</li>
-		<br>
-		</c:forEach>
+
+<table>
+	<thead>
+		<tr>
+			<th><h1> Results for "${track}"</h1></th>		
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var= "searchTerm" items="${searchByTrack.data}">
+			<tr>
+				<td>
+
+				${searchTerm.title} - by ${searchTerm.artistInfo.name}
+				<br>
+				</td>
+			
+			</tr>
 		
-</ul>
+		</c:forEach>
+	
+	</tbody>
+
+
+</table>
 <a href="/">Back</a>
 </body>
 </html>

@@ -1,6 +1,5 @@
 package co.grandcircus.musicapiproject.services;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,14 +22,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import co.grandcircus.musicapiproject.models.MusicResponse;
 import co.grandcircus.musicapiproject.models.Track;
-import co.grandcircus.musicapiproject.models.TrackList;
-
 
 import co.grandcircus.musicapiproject.models.Playlist;
 import co.grandcircus.musicapiproject.models.PlaylistFromSearch;
 import co.grandcircus.musicapiproject.models.PlaylistSearchResponse;
 import co.grandcircus.musicapiproject.models.Track;
 import co.grandcircus.musicapiproject.models.TrackFromPlaylist;
+import co.grandcircus.musicapiproject.models.TrackList;
 
 @Service
 public class MusicApiService {
@@ -40,7 +38,6 @@ public class MusicApiService {
 	String url = "https://deezerdevs-deezer.p.rapidapi.com";
 
 	private static HttpEntity formatRequest() {
-	
 
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
@@ -50,51 +47,44 @@ public class MusicApiService {
 		header.set("X-RapidAPI-Host", "deezerdevs-deezer.p.rapidapi.com");
 
 		HttpEntity request = new HttpEntity<>(header);
-		
-	  
+
 		return request;
 	}
-	// this one is wrong but not completely wrong - mismatch on type asked for and type received.
+
+	// this one is wrong but not completely wrong - mismatch on type asked for and
+	// type received.
 	public MusicResponse getGeoData(String search) {
 		HttpEntity request = formatRequest();
-		
+
 		Map<String, String> params = new HashMap<>();
 		params.put("search", search);
 
-		
-		ResponseEntity<MusicResponse> response = restTemplate.exchange(url + "/search?q={search}", HttpMethod.GET, request, MusicResponse.class, params);	
+		ResponseEntity<MusicResponse> response = restTemplate.exchange(url + "/search?q={search}", HttpMethod.GET,
+				request, MusicResponse.class, params);
 		return response.getBody();
-	
-	}
 
-//	public Track getSingleTrack(String track) {
-//		Map<String, String> params = new HashMap<>();
-//		params.put("track", track);
-//		Track response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
-//		
-//		return response;
-//		
-//	}
+	}
 	
-	public TrackList getSingleTrack(String track) {
+	public Track getSingleTrack(String track) {
 		Map<String, String> params = new HashMap<>();
 		params.put("track", track);
-		TrackList response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
+		Track response = restTemplate.exchange(url + "/track/{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
 		
+
 		return response;
-		
+
 	}
+
+	// for geographical search
 	public TrackList getMultipleTracks(String searchTerm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("searchTerm", searchTerm);
-		TrackList response = restTemplate.exchange(url + "/search?q={searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
+		TrackList response = restTemplate.exchange(url + "/search?q=track:\"{searchTerm}\"", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
 		
+
 		return response;
-		
+
 	}
-	
-	
-	
 
 
 //		}
@@ -108,8 +98,6 @@ public class MusicApiService {
 				formatRequest(), TrackList.class, params).getBody();
 		return response;
 	}
-
-
 
 	private PlaylistSearchResponse searchByPlaylist(Integer year) {
 		Map<String, String> params = new HashMap<>();
@@ -130,12 +118,12 @@ public class MusicApiService {
 		return response;
 	}
 
-//It looks like I'm getting a track back from a track, but I'm actually starting with a track inside of the playlist class and converting
+	//It looks like I'm getting a track back from a track, but I'm actually starting with a track inside of the playlist class and converting
 	// it into a pure track type ( a pure track type has the fields I need, whereas
 	// a track within playlist is missing those fields
-	private Track getIndividualTrack(TrackFromPlaylist track) {
+	public Track getIndividualTrack(String id) {
 		Map<String, String> params = new HashMap<>();
-		params.put("trackid", track.getId());
+		params.put("trackid", id);
 
 		Track response = restTemplate
 				.exchange(url + "/track/{trackid}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
@@ -167,7 +155,7 @@ public class MusicApiService {
 			for (TrackFromPlaylist track : trackList) {
 				consolidatedListOfTracks.add(track);
 				counter++;
-				if (counter>=50) {
+				if (counter >= 50) {
 					break;
 				}
 			}
@@ -175,7 +163,7 @@ public class MusicApiService {
 		List<Track> siftedDecadePlaylist = new ArrayList<>();
 		String yearSubstring = year.toString().substring(0, 2);
 		for (TrackFromPlaylist track : consolidatedListOfTracks) {
-			Track completeTrack = getIndividualTrack(track);
+			Track completeTrack = getIndividualTrack(track.getId());
 			String releaseDate = completeTrack.getReleaseDate();
 			String releaseDateSubstring = releaseDate.substring(0, 2);
 			if (releaseDateSubstring.equals(yearSubstring)) {
