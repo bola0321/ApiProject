@@ -22,19 +22,19 @@
 		</thead>
 		<tbody>
 		
-		<c:forEach var="searchTerm" items="${displayGeographicalSearch.data}">
+		<c:forEach var="track" items="${newTracks}">
 		
 		
 		 <form class="form" action="/addToFavorites" method="post">
-		 <input type="hidden" name="id" value="${searchTerm.id}"/>
+		 <input type="hidden" name="id" value="${track.id}"/>
 		 	 <tr>
 				<td>
-				<img src= "${searchTerm.album.coverSmall}" alt= "picture of album cover">
-				${searchTerm.title}
+				<img src= "${track.album.coverSmall}" alt= "picture of album cover">
+				${track.title}
 				<br>
-				${searchTerm.artistInfo.name}
+				${track.artistInfo.name}
 				</td>
-				<td><button type="submit">Add ${searchTerm.title}</button></td>
+				<td><button type="submit">Add ${track.title}</button></td>
 				
 			</tr>
 			</form>
