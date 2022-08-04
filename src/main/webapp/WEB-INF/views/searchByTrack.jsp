@@ -42,6 +42,6 @@
 
 
 </table>
-<a href="/" class="button">Find More New Music</a>
+<a href="/" class="button">Find More New Music</a> | <a href="/showFavorites" class="button">Show Favorites List</a>
 </body>
 </html>

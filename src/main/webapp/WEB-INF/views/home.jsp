@@ -51,11 +51,15 @@
 	<form class="form" action="/searchSongsLikeThis" method="post">
 		<table>
 			<tr>
-				<td>BPM: <input type="text" name="bpm"
-					placeholder="bpm"></td>
+				<td>BPM: <input type="number" name="bpm"
+					placeholder="bpm" required></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"
 			type="reset" value="Reset" />
+	</form>
+<br>			
+<h4><a href="/showFavorites" class="button">Show Favorites List</a></h4>
+
 </body>
 </html>
