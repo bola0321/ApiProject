@@ -6,6 +6,8 @@ public class Track {
 	
 	private String id;
 	private String title;
+	@JsonProperty("title_short")
+	private String titleShort;
 	private int rank;
 	// had to switch List<Artist> to just a property of type Artist
 	@JsonProperty("artist")
@@ -44,7 +46,9 @@ public class Track {
 	public int getRank() {
 		return rank;
 	}
+	
 	public void setRank(int rank) {
+		
 		this.rank = rank;
 	}
 	public Album getAlbum() {
@@ -54,6 +58,12 @@ public class Track {
 		this.album = album;
 	}
 	
+	public String getTitleShort() {
+		return titleShort;
+	}
+	public void setTitleShort(String titleShort) {
+		this.titleShort = titleShort;
+	}
 	public Track() {
 		
 	}

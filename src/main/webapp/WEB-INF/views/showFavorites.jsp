@@ -11,6 +11,20 @@
 <body>
 <h2>Show favorites</h2>
 
+<c:forEach var="tracks" items="${track.data}">
+		
+		
+		 	 <tr>
+		
+				<td>${tracks.title}</td>
+				<td>${tracks.artistInfo.name}</td>
+				
+				
+			</tr>
+			
+		
+	
+		</c:forEach>
 
 </body>
 </html>

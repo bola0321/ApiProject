@@ -11,33 +11,38 @@
 
 </head>
 <body>
+<h1>${tracks.title} added to Favorites!</h1>
+<br>
+<br>
 <table>
 		<thead>
 			<tr>
-			<th>Album Cover</th>
+		
 				<th>Song</th>
 				<th>Artist</th>
-				
+					<th>Album Cover</th>
 			</tr>
 		</thead>
-		<tbody>
 		
-		<c:forEach var="track" items="${track.data}">
+		<tbody>
+
+		
 		
 		 	<tr>
-				<td>${track.title}</td>
-				<td>${track.artist.name}</td>
 				
+				<td>${tracks.title}</td>
+				<td>${tracks.artistInfo.name}</td>
 				
+				<td><img src="${tracks.album.coverBig}" title="Album Cover" alt="Album Art for ${tracks.title}" width="100" height="100">
 			</tr>
 			
 		
 	
-		</c:forEach>
+
 		
 		</tbody>
 	</table>
-<table>
+
 <a href="/">Back</a>
 </body>
 </html>
