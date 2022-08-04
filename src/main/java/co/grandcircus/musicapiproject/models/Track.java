@@ -50,10 +50,6 @@ public class Track {
 		return rank;
 	}
 	
-	public int getRankSort() {
-		// multiply rank by -1 to allow for sort in reverse order (largest to smallest)
-		return rank *-1;
-	}
 	public void setRank(int rank) {
 		
 		this.rank = rank;

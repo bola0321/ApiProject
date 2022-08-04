@@ -44,7 +44,7 @@ public class SearchController {
 	public String searchMultipleTracks(String searchTerm, Model model) {
 		model.addAttribute("searchTerm", searchTerm);
 		List<Track> newTracks = musicService.getMultipleTracks(searchTerm).getData();
-		Collections.sort(newTracks, Comparator.comparingInt(Track::getRankSort));
+		Collections.sort(newTracks, Comparator.comparingInt(Track::getRank));
 		model.addAttribute("newTracks", newTracks);
 	
 		return "displayGeographicalSearch";
