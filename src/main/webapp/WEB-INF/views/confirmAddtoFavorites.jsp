@@ -6,18 +6,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Confirmation - Added to Favorites</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
 </head>
 <body>
 <table>
 		<thead>
-		<tr><th>Song Id: ${track.id}</th></tr>
-		
+			<tr>
+			<th>Album Cover</th>
+				<th>Song</th>
+				<th>Artist</th>
+				
+			</tr>
 		</thead>
-
+		<tbody>
+		
+		<c:forEach var="track" items="${track.data}">
+		
+		 	<tr>
+				<td><img src="${track.album.coverBig}" title="Album Cover" alt="Album Art for ${trackInfo.title}" width="100" height="100">
+				<td>${track.title}</td>
+				<td>${track.artist.name}</td>
+				
+				
+			</tr>
+			
+		
+	
+		</c:forEach>
+		
+		</tbody>
 	</table>
+<table>
 <a href="/">Back</a>
 </body>
 </html>

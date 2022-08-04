@@ -38,12 +38,7 @@ public class Track {
 	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
-//	public List<Artist> getArtistInfo() {
-//		return artistInfo;
-//	}
-//	public void setArtistInfo(List<Artist> artistInfo) {
-//		this.artistInfo = artistInfo;
-//	}
+
 	public Artist getArtistInfo() {
 		return artistInfo;
 	}

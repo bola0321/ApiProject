@@ -41,16 +41,20 @@ public class SearchController {
 
 		return "displayGeographicalSearch";
 	}
+<<<<<<< HEAD
 
 	@PostMapping("addToFavorites")
 	public String addToFavorites(Model model, @RequestParam String id, @RequestParam String songTitle,
 			@RequestParam String artistName) {
+=======
+	
+	@PostMapping("addToFavorites") 
+	public String addToFavorites(Model model, @RequestParam String id) {
+>>>>>>> 6bee4e34ff0e543c0e852c56d94a7640b1446c2c
 		model.addAttribute("id", id);
-		model.addAttribute("songTitle", songTitle);
-		model.addAttribute("artistName", artistName);
 		Track track = new Track(id);
 		favorites.save(track);
-		model.addAttribute("track", track);
+	//	model.addAttribute("track", musicService.getSingleTrack(id));
 
 		return "confirmAddtoFavorites";
 
@@ -68,7 +72,10 @@ public class SearchController {
 			// TODO: Throw 400 error if not within range(add a range to the JSP as well)
 		}
 		model.addAttribute("decadeTrackList", musicService.getTracksforDecade(year));
+<<<<<<< HEAD
 		model.addAttribute("year", year);
+=======
+>>>>>>> 6bee4e34ff0e543c0e852c56d94a7640b1446c2c
 
 		return "searchByDecade";
 	}
@@ -78,5 +85,13 @@ public class SearchController {
 		model.addAttribute("bpm", bpm);
 		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
 		return "searchSongsLikeThis";
+<<<<<<< HEAD
 	}
 }
+=======
+}
+}
+	
+
+
+>>>>>>> 6bee4e34ff0e543c0e852c56d94a7640b1446c2c

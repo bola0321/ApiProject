@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Geography Search</title>
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
 </head>
@@ -26,14 +26,10 @@
 		<c:forEach var="searchTerm" items="${displayGeographicalSearch.data}">
 		 <form class="form" action="/addToFavorites" method="post">
 		 <input type="hidden" name="id" value="${searchTerm.id}"/>
-		 <input type="hidden" name="rank" value="${searchTerm.rank}"/>
-		 <input type="hidden" name="releaseDate" value="${searchTerm.releaseDate}"/>
-		 <input type="hidden" name="albumTitle" value="${searchTerm.album.title}"/>
-		 <input type="hidden" name="albumCover" value="${searchTerm.album.coverBig}"/>
-		 	<tr>
+		 	 <tr>
 		
-				<td><input type="hidden" name="songTitle">${searchTerm.title}</td>
-				<td><input type="hidden" name="artistName">${searchTerm.artistInfo.name}</td>
+				<td>${searchTerm.title}</td>
+				<td>${searchTerm.artistInfo.name}</td>
 				<td><input type="submit" value="Add ${searchTerm.title}"></td>
 				
 			</tr>

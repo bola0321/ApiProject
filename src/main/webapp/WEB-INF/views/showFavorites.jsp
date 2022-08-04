@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Favorites</title>
 </head>
 <body>
 <h2>Show favorites</h2>
