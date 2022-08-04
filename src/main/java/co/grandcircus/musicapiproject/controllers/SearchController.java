@@ -59,6 +59,7 @@ public class SearchController {
 	@RequestMapping("confirmAddtoFavorites")
 	public String showConfirmAddtoFavorites() {
 		return "confirmAddtoFavorites";
+	}
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
 		if (!(year >=1950 && year< 2022)) {
@@ -70,12 +71,12 @@ public class SearchController {
 	}
 	
 	@PostMapping("/searchSongsLikeThis")
-	public String searchBySimilarities(String bpm, Model model) {
+	public String searchBySimilarities(Float bpm, Model model) {
 		model.addAttribute("bpm", bpm);
-		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
+		model.addAttribute("similarTrackList", musicService.getTracks(bpm));
 		return "searchSongsLikeThis";
 }
 }
-	}
+	
 
 

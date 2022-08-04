@@ -18,7 +18,14 @@ public class Track {
 	@JsonProperty("release_date")
 	private String releaseDate;
 	private Album album;
+	private float bpm;
 	
+	public float getBpm() {
+		return bpm;
+	}
+	public void setBpm(float bpm) {
+		this.bpm = bpm;
+	}
 	public String getId() {
 		return id;
 	}
