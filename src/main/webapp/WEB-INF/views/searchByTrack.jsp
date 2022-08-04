@@ -12,29 +12,36 @@
 </head>
 <body>
 
-<table>
+<table class = table>
 	<thead>
 		<tr>
-			<th><h1> Results for "${track}"</h1></th>		
+			<th><h1> Results for "${track}"</h1></th>
+			<th>Add to Favorites</th>		
 		</tr>
+		
 	</thead>
 	<tbody>
 		<c:forEach var= "searchTerm" items="${searchByTrack.data}">
+		
+			<form class= "form" action="/addToFavorites" method="post">
+			<input type="hidden" name= "id" value= ${searchTerm.id}/>
 			<tr>
 				<td>
-
-				${searchTerm.title} - by ${searchTerm.artistInfo.name}
+				<img src= "${searchTerm.album.coverSmall}" alt= "picture of album cover">
+				${searchTerm.title} 
 				<br>
+				 ${searchTerm.artistInfo.name}
 				</td>
+				<td><button type="submit">Add ${searchTerm.title}</button></td>
 			
 			</tr>
-		
+			</form>
 		</c:forEach>
 	
 	</tbody>
 
 
 </table>
-<a href="/">Back</a>
+<a href="/" class="button">Find More New Music</a>
 </body>
 </html>

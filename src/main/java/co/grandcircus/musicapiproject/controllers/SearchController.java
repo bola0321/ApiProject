@@ -36,7 +36,7 @@ public class SearchController {
 	@PostMapping("/searchByTrack")
 	public String showSearchByTrack(String track, Model model) {
 		model.addAttribute("track", track);
-		model.addAttribute("searchByTrack", musicService.getSingleTrack(track));
+		model.addAttribute("searchByTrack", musicService.getMultipleTracks(track));
 		return "searchByTrack";
 	}
 
@@ -89,7 +89,6 @@ public class SearchController {
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
 		if (!(year >= 1950 && year < 2022)) {
-			// TODO: Throw 400 error if not within range(add a range to the JSP as well)
 		}
 		model.addAttribute("decadeTrackList", musicService.getTracksforDecade(year));
 

@@ -16,7 +16,7 @@
 <table class= table>
 		<thead>
 			<tr>
-				<th style="width:50%"><h1> "${searchTerm}" Playlist  </h1></th>
+				<th><h1> Results for "${searchTerm}"  </h1></th>
 				<th>Add to Favorites</th>
 			</tr>
 		</thead>
@@ -27,7 +27,6 @@
 		
 		 <form class="form" action="/addToFavorites" method="post">
 		 <input type="hidden" name="id" value="${searchTerm.id}"/>
-		
 		 	 <tr>
 				<td>
 				<img src= "${searchTerm.album.coverSmall}" alt= "picture of album cover">
@@ -46,7 +45,7 @@
 		</tbody>
 	</table>
 
-<a href="/" class="button">Generate a New Playlist</a>
+<a href="/" class="button">Find More New Music</a>
 
 </body>
 </html>

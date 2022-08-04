@@ -46,7 +46,7 @@
 
 </table>
 
-<a href="/" class="button">Generate a New Playlist</a>
+<a href="/" class="button">Find More New Music</a>
 
 </body>
 </html>
