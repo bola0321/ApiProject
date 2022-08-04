@@ -9,6 +9,7 @@ public class MongoFavorite {
 	private String trackid;
 	private String artist;
 	private String trackName;
+	
 	public String getTrackid() {
 		return trackid;	
 	}

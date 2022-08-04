@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.musicapiproject.models.MongoFavorite;
 import co.grandcircus.musicapiproject.models.Track;
-
 import co.grandcircus.musicapiproject.repository.MusicApiRepo;
 import co.grandcircus.musicapiproject.services.MusicApiService;
 
@@ -67,7 +66,7 @@ public class SearchController {
 		return "confirmAddtoFavorites";
 	}
 
-	
+		
 	@PostMapping("/addToFavorites")
 	public String addToFavorites(Model model, @RequestParam String id) {
 		model.addAttribute("id", id);
@@ -99,8 +98,20 @@ public class SearchController {
 		return "searchSongsLikeThis";
 }
 
-	
+	@RequestMapping("/showFavorites")
+	public String showFavorites(Model model) {
+		List<MongoFavorite> faves = favorites.findAll();
+		int count = (int) favorites.count();
+		model.addAttribute("favorites", faves);
+		model.addAttribute("count", count);
+		return "showFavorites";
+	}
 
+	@RequestMapping("/deleteFromFavorites")
+	public String deleteSong(@RequestParam String id) {
+		favorites.deleteById(id);
+		return "redirect:/showFavorites";
+	}
 	
 
 }
