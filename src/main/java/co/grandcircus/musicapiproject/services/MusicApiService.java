@@ -50,20 +50,6 @@ public class MusicApiService {
 
 		return request;
 	}
-
-	// this one is wrong but not completely wrong - mismatch on type asked for and
-	// type received.
-	public MusicResponse getGeoData(String search) {
-		HttpEntity request = formatRequest();
-
-		Map<String, String> params = new HashMap<>();
-		params.put("search", search);
-
-		ResponseEntity<MusicResponse> response = restTemplate.exchange(url + "/search?q={search}", HttpMethod.GET,
-				request, MusicResponse.class, params);
-		return response.getBody();
-
-	}
 	
 	public Track getSingleTrack(String track) {
 		Map<String, String> params = new HashMap<>();

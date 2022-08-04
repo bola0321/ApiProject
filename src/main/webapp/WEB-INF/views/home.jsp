@@ -11,7 +11,8 @@
 <title>Playlist Builder</title>
 </head>
 <body>
-	<h1>Build Your Playlists, Select Your Favorites!</h1>
+	<h1> Plylst</h1>
+	<h3> build something new &#8482</h3>
 	<form class="form" action="/searchByTrack" method="post">
 		<table>
 			<tr>
