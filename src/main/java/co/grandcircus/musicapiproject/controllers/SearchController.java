@@ -1,5 +1,6 @@
 package co.grandcircus.musicapiproject.controllers;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -43,7 +44,18 @@ public class SearchController {
 	@PostMapping("displayGeographicalSearch")
 	public String searchMultipleTracks(String searchTerm, Model model) {
 		model.addAttribute("searchTerm", searchTerm);
-		List<Track> newTracks = musicService.getMultipleTracks(searchTerm).getData();
+		List<Track> tracks = musicService.getMultipleTracks(searchTerm).getData();
+		List<Track> newTracks = new ArrayList<Track>();
+		Collections.sort(tracks, Comparator.comparing(Track::getTitle));	
+		// remove duplicates
+		for (int i = 1; i < tracks.size(); i++) {
+			if ((tracks.get(i).getTitle().equals(tracks.get(i-1).getTitle())) && (tracks.get(i).getArtistInfo().getName().equals(tracks.get(i-1).getArtistInfo().getName()))) {
+				// do nothing 
+			} else {
+				newTracks.add(tracks.get(i));
+			}
+			}
+		// sort by popularity
 		Collections.sort(newTracks, Comparator.comparingInt(Track::getRank));
 		model.addAttribute("newTracks", newTracks);
 	
