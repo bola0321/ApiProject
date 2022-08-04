@@ -1,6 +1,5 @@
 package co.grandcircus.musicapiproject.controllers;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import co.grandcircus.musicapiproject.models.MongoFavorite;
 import co.grandcircus.musicapiproject.models.Track;
 import co.grandcircus.musicapiproject.repository.MusicApiRepo;
 import co.grandcircus.musicapiproject.services.MusicApiService;
@@ -27,40 +27,34 @@ public class SearchController {
 		return "home";
 	}
 
-	@PostMapping("searchByTrack")
+	@PostMapping("/searchByTrack")
 	public String showSearchByTrack(String track, Model model) {
 		model.addAttribute("track", track);
 		model.addAttribute("searchByTrack", musicService.getSingleTrack(track));
 		return "searchByTrack";
 	}
 
-	@PostMapping("displayGeographicalSearch")
+	@PostMapping("/displayGeographicalSearch")
 	public String searchMultipleTracks(String searchTerm, Model model) {
 		model.addAttribute("searchTerm", searchTerm);
 		model.addAttribute("displayGeographicalSearch", musicService.getMultipleTracks(searchTerm));
 
 		return "displayGeographicalSearch";
 	}
-<<<<<<< HEAD
 
-	@PostMapping("addToFavorites")
-	public String addToFavorites(Model model, @RequestParam String id, @RequestParam String songTitle,
-			@RequestParam String artistName) {
-=======
-	
-	@PostMapping("addToFavorites") 
+	@PostMapping("/addToFavorites")
 	public String addToFavorites(Model model, @RequestParam String id) {
->>>>>>> 6bee4e34ff0e543c0e852c56d94a7640b1446c2c
 		model.addAttribute("id", id);
-		Track track = new Track(id);
-		favorites.save(track);
-	//	model.addAttribute("track", musicService.getSingleTrack(id));
+		Track track = musicService.getIndividualTrack(id);
+		MongoFavorite fave = new MongoFavorite(id, track.getArtistInfo().getName(), track.getTitle());
+		favorites.save(fave);
+		
 
 		return "confirmAddtoFavorites";
 
 	}
 
-	@RequestMapping("confirmAddtoFavorites")
+	@RequestMapping("/confirmAddtoFavorites")
 	public String showConfirmAddtoFavorites() {
 		return "confirmAddtoFavorites";
 
@@ -72,10 +66,8 @@ public class SearchController {
 			// TODO: Throw 400 error if not within range(add a range to the JSP as well)
 		}
 		model.addAttribute("decadeTrackList", musicService.getTracksforDecade(year));
-<<<<<<< HEAD
+
 		model.addAttribute("year", year);
-=======
->>>>>>> 6bee4e34ff0e543c0e852c56d94a7640b1446c2c
 
 		return "searchByDecade";
 	}
@@ -85,13 +77,7 @@ public class SearchController {
 		model.addAttribute("bpm", bpm);
 		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
 		return "searchSongsLikeThis";
-<<<<<<< HEAD
+
 	}
-}
-=======
-}
-}
-	
 
-
->>>>>>> 6bee4e34ff0e543c0e852c56d94a7640b1446c2c
+}

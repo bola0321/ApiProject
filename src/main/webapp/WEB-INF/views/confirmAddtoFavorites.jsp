@@ -25,7 +25,6 @@
 		<c:forEach var="track" items="${track.data}">
 		
 		 	<tr>
-				<td><img src="${track.album.coverBig}" title="Album Cover" alt="Album Art for ${trackInfo.title}" width="100" height="100">
 				<td>${track.title}</td>
 				<td>${track.artist.name}</td>
 				

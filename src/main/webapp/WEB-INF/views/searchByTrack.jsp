@@ -12,7 +12,7 @@
 </head>
 <body>
 
-
+<table>
 	<thead>
 		<tr>
 			<th><h1> Results for "${track}"</h1></th>		

@@ -124,12 +124,12 @@ public class MusicApiService {
 		return response;
 	}
 
-//It looks like I'm getting a track back from a track, but I'm actually starting with a track inside of the playlist class and converting
+	//It looks like I'm getting a track back from a track, but I'm actually starting with a track inside of the playlist class and converting
 	// it into a pure track type ( a pure track type has the fields I need, whereas
 	// a track within playlist is missing those fields
-	private Track getIndividualTrack(TrackFromPlaylist track) {
+	public Track getIndividualTrack(String id) {
 		Map<String, String> params = new HashMap<>();
-		params.put("trackid", track.getId());
+		params.put("trackid", id);
 
 		Track response = restTemplate
 				.exchange(url + "/track/{trackid}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
@@ -169,7 +169,7 @@ public class MusicApiService {
 		List<Track> siftedDecadePlaylist = new ArrayList<>();
 		String yearSubstring = year.toString().substring(0, 2);
 		for (TrackFromPlaylist track : consolidatedListOfTracks) {
-			Track completeTrack = getIndividualTrack(track);
+			Track completeTrack = getIndividualTrack(track.getId());
 			String releaseDate = completeTrack.getReleaseDate();
 			String releaseDateSubstring = releaseDate.substring(0, 2);
 			if (releaseDateSubstring.equals(yearSubstring)) {

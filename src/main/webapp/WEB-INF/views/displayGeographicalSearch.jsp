@@ -26,11 +26,14 @@
 		<c:forEach var="searchTerm" items="${displayGeographicalSearch.data}">
 		 <form class="form" action="/addToFavorites" method="post">
 		 <input type="hidden" name="id" value="${searchTerm.id}"/>
+		
+
+		 
 		 	 <tr>
 		
 				<td>${searchTerm.title}</td>
 				<td>${searchTerm.artistInfo.name}</td>
-				<td><input type="submit" value="Add ${searchTerm.title}"></td>
+				<td><button type="submit">Add ${searchTerm.title}</button></td>
 				
 			</tr>
 				</form>
