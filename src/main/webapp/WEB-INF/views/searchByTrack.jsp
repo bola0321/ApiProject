@@ -25,7 +25,7 @@
 		
 			<form class= "form" action="/addToFavorites" method="post">
 			<input type="hidden" name= "id" value= "${searchTerm.id}"/>
-			<input type="hidden" name="cover" value="${track.album.coverSmall}"/>
+			<input type="hidden" name="cover" value="${searchTerm.album.coverSmall}"/>
 			<tr>
 				<td>
 				<img src= "${searchTerm.album.coverSmall}" alt= "picture of album cover">

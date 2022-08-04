@@ -2,7 +2,6 @@ package co.grandcircus.musicapiproject.models;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MusicResponse {
 	
