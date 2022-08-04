@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.musicapiproject.models.MongoFavorite;
 import co.grandcircus.musicapiproject.models.Track;
-
 import co.grandcircus.musicapiproject.repository.MusicApiRepo;
 import co.grandcircus.musicapiproject.services.MusicApiService;
 
@@ -67,7 +65,7 @@ public class SearchController {
 		return "confirmAddtoFavorites";
 	}
 
-	
+		
 	@PostMapping("/addToFavorites")
 	public String addToFavorites(Model model, @RequestParam String id) {
 		model.addAttribute("id", id);
@@ -105,7 +103,12 @@ public class SearchController {
 		return "searchSongsLikeThis";
 }
 
-	
+	@RequestMapping("/showFavorites")
+	public String showFavorites(Model model) {
+		List<MongoFavorite> faves = favorites.findAll();
+		model.addAttribute("favorites", faves);
+		return "showFavorites";
+	}
 
 	
 
