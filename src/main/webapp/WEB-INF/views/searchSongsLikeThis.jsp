@@ -12,8 +12,8 @@
 <h1>Songs Like This... Playlist</h1>
 
 <ul>
-	<c:forEach var= "bpm" items= "${searchSongsLikeThis.data}">
-		<li>${bpm.title} - by ${bpm.artistInfo.name}</li>
+	<c:forEach var= "bpm" items= "${similarTrackList.data}">
+		<li>${bpm.title}</li>
 		<br>
 		</c:forEach>
 		
