@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,16 +75,11 @@ public class SearchController {
 		MongoFavorite fave = new MongoFavorite(id, track.getArtistInfo().getName(), track.getTitle());
 		favorites.save(fave);
 
-		return "confirmAddtoFavorites";
+		return "redirect:/showFavorites";
 
 	}
 
-	@RequestMapping("/confirmAddtoFavorites")
-	public String showConfirmAddtoFavorites() {
-		
-		return "confirmAddtoFavorites";
 
-	}
 
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
