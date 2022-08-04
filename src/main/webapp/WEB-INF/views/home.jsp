@@ -16,7 +16,7 @@
 		<table>
 			<tr>
 				<td>Track: <input type="text" name="track"
-					placeholder="Song title"></td>
+					placeholder="Song title" required></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"
@@ -28,7 +28,7 @@
 		<table>
 			<tr>
 				<td>Location: <input type="text" name="searchTerm"
-					placeholder="eg, Detroit"></td>
+					placeholder="eg, Detroit" required></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"

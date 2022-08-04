@@ -16,11 +16,17 @@
 <table class= table>
 	<thead>
 		<tr>
-			<th><h1> ${year} Decade Playlist</h1></th>		
+			<th><h1> ${year} Decade Playlist</h1></th>	
+			<th> Add to Favorites</th>	
 		</tr>
 	</thead>
 	<tbody>
 		<c:forEach var= "track" items="${decadeTrackList}">
+		
+		<form class= "form" action= "/addToFavorites" method= "post">
+		 <input type="hidden" name="id" value="${track.id}"/>
+		 
+		
 			<tr>
 				<td>
 				<img src="${track.album.coverSmall}" alt="picture of a ${track.album.title} album cover" >
@@ -28,8 +34,10 @@
 				<br>
 				${track.artistInfo.name}
 				</td>
+				<td><button type="submit">Add ${track.title}</button></td>
 			
 			</tr>
+			</form>
 		
 		</c:forEach>
 	

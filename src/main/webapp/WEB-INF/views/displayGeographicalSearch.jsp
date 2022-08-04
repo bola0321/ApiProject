@@ -1,42 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Geography Search</title>
+<meta charset="ISO-8859-1">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+<title>${searchTerm} Search</title>
 </head>
 <body>
-<h1>Geographical Playlist</h1>
 
-<table>
+
+<table class= table>
 		<thead>
 			<tr>
-				<th>Song</th>
-				<th>Artist</th>
+				<th style="width:50%"><h1> "${searchTerm}" Playlist  </h1></th>
 				<th>Add to Favorites</th>
 			</tr>
 		</thead>
 		<tbody>
 		
 		<c:forEach var="searchTerm" items="${displayGeographicalSearch.data}">
+		
+		
 		 <form class="form" action="/addToFavorites" method="post">
 		 <input type="hidden" name="id" value="${searchTerm.id}"/>
 		
-
-		 
 		 	 <tr>
-		
-				<td>${searchTerm.title}</td>
-				<td>${searchTerm.artistInfo.name}</td>
+				<td>
+				<img src= "${searchTerm.album.coverSmall}" alt= "picture of album cover">
+				${searchTerm.title}
+				<br>
+				${searchTerm.artistInfo.name}
+				</td>
 				<td><button type="submit">Add ${searchTerm.title}</button></td>
 				
 			</tr>
-				</form>
+			</form>
 		
 	
 		</c:forEach>
@@ -44,7 +46,7 @@
 		</tbody>
 	</table>
 
-<a href="/">Back</a>
+<a href="/" class="button">Generate a New Playlist</a>
 
 </body>
 </html>

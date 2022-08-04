@@ -37,7 +37,7 @@
 		
 		</tbody>
 	</table>
-<table>
+
 <a href="/">Back</a>
 </body>
 </html>
