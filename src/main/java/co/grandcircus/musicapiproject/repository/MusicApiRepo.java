@@ -9,7 +9,7 @@ import co.grandcircus.musicapiproject.models.MongoFavorite;
 
 public interface MusicApiRepo extends MongoRepository<MongoFavorite, String>{
 
-	List<Track> findAll();
-	Optional<Track> findById(String id);
+	List<MongoFavorite> findAll();
+	Optional<MongoFavorite> findById(String id);
 	
 }
