@@ -9,17 +9,20 @@ public class MongoFavorite {
 	private String trackid;
 	private String artist;
 	private String trackName;
+
+	private String cover;
 	
 	public String getTrackid() {
 		return trackid;	
 	}
 	
 	
-	public MongoFavorite(String trackid, String artist, String trackName) {
+	public MongoFavorite(String trackid, String artist, String trackName, String cover) {
 		this.trackid = trackid;
 		this.artist = artist;
 		this.trackName = trackName;
-	}
+		this.cover = cover;
+		}
 	
 	
 	public MongoFavorite() {
@@ -42,6 +45,13 @@ public class MongoFavorite {
 		this.trackName = trackName;
 	}
 	
-	
+	public String getCover() {
+		return cover;
+	}
+
+
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
 
 }

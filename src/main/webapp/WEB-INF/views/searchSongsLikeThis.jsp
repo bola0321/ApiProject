@@ -31,6 +31,8 @@
 
 				<form class="form" action="/addToFavorites" method="post">
 					<input type="hidden" name="id" value="${bpm.id}" />
+					<input type="hidden" name="cover" value="${bpm.album.coverSmall}"/>
+
 					<tr>
 						<td><img src="${bpm.album.coverSmall}"
 							alt="picture of album cover"> ${bpm.title} <br>

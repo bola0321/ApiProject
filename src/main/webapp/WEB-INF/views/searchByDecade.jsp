@@ -25,6 +25,7 @@
 		
 		<form class= "form" action= "/addToFavorites" method= "post">
 		 <input type="hidden" name="id" value="${track.id}"/>
+		 <input type="hidden" name="cover" value="${track.album.coverSmall}"/>
 		 
 		
 			<tr>
