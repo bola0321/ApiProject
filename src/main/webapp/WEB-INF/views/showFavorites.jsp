@@ -9,21 +9,35 @@
 <title>Favorites</title>
 </head>
 <body>
-	<h2>Your Favorite Tracks:</h2>
+<h1>Your Favorite Tracks: </h1>
+<table class= table>
 
-	<c:forEach var="track" items="${favorites}">
+ <c:set var = "count" value = "${count}"/>
+      <c:if test = "${count < 1}">
+         <p>Favorites is empty!<p>
+      </c:if>
+      <thead>
+      <tr><th>Song</th>
+      <th>Artist</th></tr>
+      </thead>
+		<tbody>
+		
+		<c:forEach var="track" items="${favorites}">
+		 
+		<tr>	<td>${track.trackName}</td>
+					<td>${track.artist}</td>
+				<td><a href="/deleteFromFavorites?id=${track.trackid}">Remove from Favorites</a></td>			
+	</tr>	
 
-		<tr>
+		
+		</c:forEach>
+		
+		</tbody>
+		
+	</table>
 
-			<td>${track.trackName}</td>
-			<td>${track.artist}</td>
+<a href="/" class="button">Find More New Music</a>
 
-
-		</tr>
-
-
-
-	</c:forEach>
 
 </body>
 </html>

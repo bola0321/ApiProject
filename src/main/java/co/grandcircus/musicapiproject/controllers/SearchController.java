@@ -105,10 +105,17 @@ public class SearchController {
 	@RequestMapping("/showFavorites")
 	public String showFavorites(Model model) {
 		List<MongoFavorite> faves = favorites.findAll();
+		int count = (int) favorites.count();
 		model.addAttribute("favorites", faves);
+		model.addAttribute("count", count);
 		return "showFavorites";
 	}
 
+	@RequestMapping("/deleteFromFavorites")
+	public String deleteSong(@RequestParam String id) {
+		favorites.deleteById(id);
+		return "redirect:/showFavorites";
+	}
 	
 
 }
