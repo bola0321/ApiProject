@@ -1,7 +1,9 @@
 package co.grandcircus.musicapiproject.controllers;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.musicapiproject.models.Track;
+
 import co.grandcircus.musicapiproject.repository.MusicApiRepo;
 import co.grandcircus.musicapiproject.services.MusicApiService;
 
@@ -40,8 +43,10 @@ public class SearchController {
 	@PostMapping("displayGeographicalSearch")
 	public String searchMultipleTracks(String searchTerm, Model model) {
 		model.addAttribute("searchTerm", searchTerm);
-		model.addAttribute("displayGeographicalSearch", musicService.getMultipleTracks(searchTerm));
-		
+		List<Track> newTracks = musicService.getMultipleTracks(searchTerm).getData();
+		Collections.sort(newTracks, Comparator.comparingInt(Track::getRankSort));
+		model.addAttribute("newTracks", newTracks);
+	
 		return "displayGeographicalSearch";
 	}
 	

@@ -18,19 +18,21 @@
 			<tr>
 				<th>Song</th>
 				<th>Artist</th>
+		
 				<th>Add to Favorites</th>
 			</tr>
 		</thead>
 		<tbody>
-		
-		<c:forEach var="searchTerm" items="${displayGeographicalSearch.data}">
+		<c:forEach var="track" items="${newTracks}">
 		 <form class="form" action="/addToFavorites" method="post">
-		 <input type="hidden" name="id" value="${searchTerm.id}"/>
+		 <input type="hidden" name="id" value="${track.id}"/>
 		 	 <tr>
 		
-				<td> <input type="hidden" name="title" value="${searchTerm.title}"/>${searchTerm.title}</td>
-				<td> <input type="hidden" name="artist" value="${searchTerm.artistInfo.name}"/>${searchTerm.artistInfo.name}</td>
-				<td><input type="submit" value="Add ${searchTerm.title}"></td>
+				<td><input type="hidden" name="title" value="${track.title}"/>${track.title}</td>
+				<td><input type="hidden" name="artist" value="${track.artistInfo.name}"/>${track.artistInfo.name}</td>
+			
+				
+				<td><input type="submit" value="Add ${track.title}"></td>
 				
 			</tr>
 				</form>

@@ -79,7 +79,7 @@ public class MusicApiService {
 	public TrackList getMultipleTracks(String searchTerm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("searchTerm", searchTerm);
-		TrackList response = restTemplate.exchange(url + "/search?q=track:{searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
+		TrackList response = restTemplate.exchange(url + "/search?q=track:\"{searchTerm}\"", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
 		
 		return response;
 		

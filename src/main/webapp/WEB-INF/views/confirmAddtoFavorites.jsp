@@ -12,6 +12,8 @@
 </head>
 <body>
 <h1>${tracks.title} added to Favorites!</h1>
+<br>
+<br>
 <table>
 		<thead>
 			<tr>
