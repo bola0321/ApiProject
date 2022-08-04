@@ -13,6 +13,8 @@
 
 <ul>
 	<c:forEach var= "bpm" items= "${similarTrackList.data}">
+	<input type="hidden" name= "id" value= "${bpm.id}"/>
+	<input type="hidden" name="cover" value="${bpm.album.coverSmall}"/>
 		<li>${bpm.title}</li>
 		<br>
 		</c:forEach>

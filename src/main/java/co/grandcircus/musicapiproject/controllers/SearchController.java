@@ -70,19 +70,14 @@ public class SearchController {
 	public String addToFavorites(Model model, @RequestParam String id) {
 		model.addAttribute("id", id);
 		Track track = musicService.getIndividualTrack(id);
-		MongoFavorite fave = new MongoFavorite(id, track.getArtistInfo().getName(), track.getTitle());
+		MongoFavorite fave = new MongoFavorite(id, track.getArtistInfo().getName(), track.getTitle(), track.getAlbum().getCoverSmall());
 		favorites.save(fave);
 
-		return "confirmAddtoFavorites";
+		return "redirect:/showFavorites";
 
 	}
 
-	@RequestMapping("/confirmAddtoFavorites")
-	public String showConfirmAddtoFavorites() {
-		
-		return "confirmAddtoFavorites";
 
-	}
 
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
@@ -110,6 +105,8 @@ public class SearchController {
 		model.addAttribute("count", count);
 		return "showFavorites";
 	}
+	
+
 
 	@RequestMapping("/deleteFromFavorites")
 	public String deleteSong(@RequestParam String id) {

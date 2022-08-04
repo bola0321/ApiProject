@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-<title>Road Trip Music</title>
+<title>Playlist Builder</title>
 </head>
 <body>
 	<h1>Build Your Playlists, Select Your Favorites!</h1>
@@ -40,7 +40,7 @@
 		<table>
 			<tr>
 				<td>Decade: <input type="number" name="year" min="1950" max="2020" step= "10"
-					placeholder="eg, 1980, 1990..." required></td>
+					placeholder="1980" required></td>
 			</tr>
 		</table>
 		<input class="button" type="submit" /> <input class="button"

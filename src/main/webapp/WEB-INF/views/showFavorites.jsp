@@ -26,6 +26,7 @@
 		 
 		<tr>	<td>${track.trackName}</td>
 					<td>${track.artist}</td>
+					<td><img src= "${track.cover}" alt= "picture of album cover"></td>
 				<td><a href="/deleteFromFavorites?id=${track.trackid}">Remove from Favorites</a></td>			
 	</tr>	
 

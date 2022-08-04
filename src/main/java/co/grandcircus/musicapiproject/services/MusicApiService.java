@@ -86,10 +86,6 @@ public class MusicApiService {
 
 	}
 
-
-//		}
-//		return completeDecadeList;
-//	}
 	public TrackList getTracks(Float bpm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("bpm", bpm.toString());
@@ -121,6 +117,7 @@ public class MusicApiService {
 	//It looks like I'm getting a track back from a track, but I'm actually starting with a track inside of the playlist class and converting
 	// it into a pure track type ( a pure track type has the fields I need, whereas
 	// a track within playlist is missing those fields
+
 	public Track getIndividualTrack(String id) {
 		Map<String, String> params = new HashMap<>();
 		params.put("trackid", id);
