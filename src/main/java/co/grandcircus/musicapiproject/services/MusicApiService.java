@@ -1,6 +1,5 @@
 package co.grandcircus.musicapiproject.services;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -23,14 +22,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import co.grandcircus.musicapiproject.models.MusicResponse;
 import co.grandcircus.musicapiproject.models.Track;
-import co.grandcircus.musicapiproject.models.TrackList;
-
 
 import co.grandcircus.musicapiproject.models.Playlist;
 import co.grandcircus.musicapiproject.models.PlaylistFromSearch;
 import co.grandcircus.musicapiproject.models.PlaylistSearchResponse;
 import co.grandcircus.musicapiproject.models.Track;
 import co.grandcircus.musicapiproject.models.TrackFromPlaylist;
+import co.grandcircus.musicapiproject.models.TrackList;
 
 @Service
 public class MusicApiService {
@@ -40,7 +38,6 @@ public class MusicApiService {
 	String url = "https://deezerdevs-deezer.p.rapidapi.com";
 
 	private static HttpEntity formatRequest() {
-	
 
 		HttpHeaders header = new HttpHeaders();
 		header.setContentType(MediaType.APPLICATION_JSON);
@@ -50,21 +47,22 @@ public class MusicApiService {
 		header.set("X-RapidAPI-Host", "deezerdevs-deezer.p.rapidapi.com");
 
 		HttpEntity request = new HttpEntity<>(header);
-		
-	  
+
 		return request;
 	}
-	// this one is wrong but not completely wrong - mismatch on type asked for and type received.
+
+	// this one is wrong but not completely wrong - mismatch on type asked for and
+	// type received.
 	public MusicResponse getGeoData(String search) {
 		HttpEntity request = formatRequest();
-		
+
 		Map<String, String> params = new HashMap<>();
 		params.put("search", search);
 
-		
-		ResponseEntity<MusicResponse> response = restTemplate.exchange(url + "/search?q={search}", HttpMethod.GET, request, MusicResponse.class, params);	
+		ResponseEntity<MusicResponse> response = restTemplate.exchange(url + "/search?q={search}", HttpMethod.GET,
+				request, MusicResponse.class, params);
 		return response.getBody();
-	
+
 	}
 
 //	public Track getSingleTrack(String track) {
@@ -75,41 +73,37 @@ public class MusicApiService {
 //		return response;
 //		
 //	}
-	
+
 	public TrackList getSingleTrack(String track) {
 		Map<String, String> params = new HashMap<>();
 		params.put("track", track);
-		TrackList response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
-		
+		TrackList response = restTemplate
+				.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), TrackList.class, params)
+				.getBody();
+
 		return response;
-		
+
 	}
+
 	public TrackList getMultipleTracks(String searchTerm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("searchTerm", searchTerm);
-		TrackList response = restTemplate.exchange(url + "/search?q={searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
-		
+		TrackList response = restTemplate
+				.exchange(url + "/search?q={searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params)
+				.getBody();
+
 		return response;
-		
+
 	}
-	
-	
-	
 
-
-//		}
-//		return completeDecadeList;
-//	}
 	public TrackList getAllTracks(String bpm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("bpm", bpm);
 
-		TrackList response = restTemplate.exchange(url + "/search?q={bpm}", HttpMethod.GET,
-				formatRequest(), TrackList.class, params).getBody();
+		TrackList response = restTemplate
+				.exchange(url + "/search?q={bpm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
 		return response;
 	}
-
-
 
 	private PlaylistSearchResponse searchByPlaylist(Integer year) {
 		Map<String, String> params = new HashMap<>();
@@ -167,7 +161,7 @@ public class MusicApiService {
 			for (TrackFromPlaylist track : trackList) {
 				consolidatedListOfTracks.add(track);
 				counter++;
-				if (counter>=50) {
+				if (counter >= 50) {
 					break;
 				}
 			}

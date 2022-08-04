@@ -1,13 +1,10 @@
 package co.grandcircus.musicapiproject.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class TrackList {
-	
-	List<Track> data = new ArrayList<Track>();
+
+	List<Track> data;
 
 	public List<Track> getData() {
 		return data;
@@ -17,6 +14,4 @@ public class TrackList {
 		this.data = data;
 	}
 
-	
-	
 }

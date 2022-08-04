@@ -6,7 +6,6 @@ public class Playlist {
 	@Id
 	private String id;
 	private String title;
-	private TrackList tracks;
 
 	private PlaylistTrackList tracks;
 	

@@ -6,6 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
 <title>Show Artist</title>
 </head>
 <body>
@@ -17,5 +19,28 @@
 	
 	</c:forEach>
 </ul>
+
+	<thead>
+		<tr>
+			<th><h1> ${artist} Playlist</h1></th>		
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach var= "music" items="${music}">
+			<tr>
+				<td>
+				${music.id}
+				<br>
+				${music.track}	
+				</td>
+			
+			</tr>
+		
+		</c:forEach>
+	
+	</tbody>
+
+
+</table>
 </body>
 </html>

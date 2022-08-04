@@ -18,6 +18,7 @@ public class Track {
 	@JsonProperty("release_date")
 	private String releaseDate;
 	private Album album;
+
 	
 	public String getId() {
 		return id;

@@ -18,34 +18,33 @@ public class SearchController {
 
 	@Autowired
 	private MusicApiService musicService;
-	
+
 	@Autowired
 	private MusicApiRepo favorites;
-	
+
 	@RequestMapping("/")
 	public String showHome() {
 		return "home";
 	}
-	
-	
-	@PostMapping("searchByTrack") 
-		public String showSearchByTrack(String track, Model model) {
+
+	@PostMapping("searchByTrack")
+	public String showSearchByTrack(String track, Model model) {
 		model.addAttribute("track", track);
 		model.addAttribute("searchByTrack", musicService.getSingleTrack(track));
 		return "searchByTrack";
-		}
+	}
 
-	
 	@PostMapping("displayGeographicalSearch")
 	public String searchMultipleTracks(String searchTerm, Model model) {
 		model.addAttribute("searchTerm", searchTerm);
 		model.addAttribute("displayGeographicalSearch", musicService.getMultipleTracks(searchTerm));
-		
+
 		return "displayGeographicalSearch";
 	}
-	
-	@PostMapping("addToFavorites") 
-	public String addToFavorites(Model model, @RequestParam String id, @RequestParam String songTitle, @RequestParam String artistName) {
+
+	@PostMapping("addToFavorites")
+	public String addToFavorites(Model model, @RequestParam String id, @RequestParam String songTitle,
+			@RequestParam String artistName) {
 		model.addAttribute("id", id);
 		model.addAttribute("songTitle", songTitle);
 		model.addAttribute("artistName", artistName);
@@ -54,32 +53,30 @@ public class SearchController {
 		model.addAttribute("track", track);
 
 		return "confirmAddtoFavorites";
-		
+
 	}
-	
+
 	@RequestMapping("confirmAddtoFavorites")
 	public String showConfirmAddtoFavorites() {
 		return "confirmAddtoFavorites";
-		
+
 	}
-	
+
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
-		if (!(year >=1950 && year< 2022)) {
-			//TODO: Throw 400 error if not within range(add a range to the JSP as well)
+		if (!(year >= 1950 && year < 2022)) {
+			// TODO: Throw 400 error if not within range(add a range to the JSP as well)
 		}
-		model.addAttribute("decadeTrackList",musicService.getTracksforDecade(year));
-		
+		model.addAttribute("decadeTrackList", musicService.getTracksforDecade(year));
+		model.addAttribute("year", year);
+
 		return "searchByDecade";
 	}
-	
+
 	@PostMapping("/searchSongsLikeThis")
 	public String searchBySimilarities(String bpm, Model model) {
 		model.addAttribute("bpm", bpm);
 		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
 		return "searchSongsLikeThis";
-}
-}
 	}
-
-
+}
