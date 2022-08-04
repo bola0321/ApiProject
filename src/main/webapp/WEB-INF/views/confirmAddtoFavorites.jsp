@@ -22,12 +22,12 @@
 		</thead>
 		<tbody>
 		
-		<c:forEach var="trackInfo" items="${track.data}">
+		<c:forEach var="track" items="${track.data}">
 		
 		 	<tr>
-				<td><img src="${trackInfo.album.coverBig}" title="Album Cover" alt="Album Art for ${trackInfo.title}" width="100" height="100">
-				<td>${trackInfo.title}</td>
-				<td>${trackInfo.artist.name}</td>
+				<td><img src="${track.album.coverBig}" title="Album Cover" alt="Album Art for ${trackInfo.title}" width="100" height="100">
+				<td>${track.title}</td>
+				<td>${track.artist.name}</td>
 				
 				
 			</tr>

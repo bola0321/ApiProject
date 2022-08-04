@@ -45,13 +45,11 @@ public class SearchController {
 	}
 	
 	@PostMapping("addToFavorites") 
-	public String addToFavorites(Model model, @RequestParam String id, @RequestParam String songTitle, @RequestParam String artistName) {
+	public String addToFavorites(Model model, @RequestParam String id) {
 		model.addAttribute("id", id);
-		model.addAttribute("songTitle", songTitle);
-		model.addAttribute("artistName", artistName);
 		Track track = new Track(id);
 		favorites.save(track);
-		model.addAttribute("track", track);
+	//	model.addAttribute("track", musicService.getSingleTrack(id));
 
 		return "confirmAddtoFavorites";
 		
@@ -80,6 +78,6 @@ public class SearchController {
 		return "searchSongsLikeThis";
 }
 }
-	}
+	
 
 
