@@ -23,5 +23,8 @@ public class Album {
 	public void setCoverBig(String coverBig) {
 		this.coverBig = coverBig;
 	}
-	
+
+	public Album() {
+		
+	}
 }

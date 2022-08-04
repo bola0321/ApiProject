@@ -65,14 +65,20 @@ public class SearchController {
 	
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {
-		if (!(year >=1950 && year< 2022)) {
-			//TODO: Throw 400 error if not within range(add a range to the JSP as well)
+		if (!(year >= 1950 && year < 2022)) {
+			// TODO: Throw 400 error if not within range(add a range to the JSP as well)
 		}
-		model.addAttribute("decadeTrackList",musicService.getTracksforDecade(year));
-		
+		model.addAttribute("decadeTrackList", musicService.getTracksforDecade(year));
+
 		return "searchByDecade";
 	}
-	
+
+//	@PostMapping("/searchSongsLikeThis")
+//	public String searchBySimilarities(String bpm, Model model) {
+//		model.addAttribute("bpm", bpm);
+//		model.addAttribute("similarTrackList", musicService.getAllTracks(bpm));
+//		return "searchSongsLikeThis";
+//	}
 	}
 
 
