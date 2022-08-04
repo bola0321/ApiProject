@@ -28,8 +28,8 @@
 		 <input type="hidden" name="id" value="${searchTerm.id}"/>
 		 	 <tr>
 		
-				<td>${searchTerm.title}</td>
-				<td>${searchTerm.artistInfo.name}</td>
+				<td> <input type="hidden" name="title" value="${searchTerm.title}"/>${searchTerm.title}</td>
+				<td> <input type="hidden" name="artist" value="${searchTerm.artistInfo.name}"/>${searchTerm.artistInfo.name}</td>
 				<td><input type="submit" value="Add ${searchTerm.title}"></td>
 				
 			</tr>

@@ -1,6 +1,7 @@
 package co.grandcircus.musicapiproject.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,22 +45,32 @@ public class SearchController {
 		return "displayGeographicalSearch";
 	}
 	
+	@RequestMapping("addToFavorites") 
+	public String displayAddToFavorites() {
+		
+		return "confirmAddtoFavorites";
+	}
+	
 	@PostMapping("addToFavorites") 
 	public String addToFavorites(Model model, @RequestParam String id) {
-		model.addAttribute("id", id);
-		Track track = new Track(id);
-		favorites.save(track);
-	//	model.addAttribute("track", musicService.getSingleTrack(id));
 
+		Track newTrack = new Track(id);
+		favorites.save(newTrack);
+		
+		model.addAttribute("tracks", musicService.getSingleTrack(id));
+		
 		return "confirmAddtoFavorites";
 		
 	}
 	
 	@RequestMapping("confirmAddtoFavorites")
 	public String showConfirmAddtoFavorites() {
+		
 		return "confirmAddtoFavorites";
 		
 	}
+	
+
 	
 	@PostMapping("/search-by-decade")
 	public String searchByDecade(@RequestParam int year, Model model) {

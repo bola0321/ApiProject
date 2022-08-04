@@ -66,40 +66,25 @@ public class MusicApiService {
 		return response.getBody();
 	
 	}
-
-//	public Track getSingleTrack(String track) {
-//		Map<String, String> params = new HashMap<>();
-//		params.put("track", track);
-//		Track response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
-//		
-//		return response;
-//		
-//	}
 	
-	public TrackList getSingleTrack(String track) {
+	public Track getSingleTrack(String track) {
 		Map<String, String> params = new HashMap<>();
 		params.put("track", track);
-		TrackList response = restTemplate.exchange(url + "/search?q=track:{track}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
+		Track response = restTemplate.exchange(url + "/track/{track}", HttpMethod.GET, formatRequest(), Track.class, params).getBody();
 		
 		return response;
 		
 	}
+	// for geographical search
 	public TrackList getMultipleTracks(String searchTerm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("searchTerm", searchTerm);
-		TrackList response = restTemplate.exchange(url + "/search?q={searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
+		TrackList response = restTemplate.exchange(url + "/search?q=track:{searchTerm}", HttpMethod.GET, formatRequest(), TrackList.class, params).getBody();
 		
 		return response;
 		
 	}
-	
-	
-	
 
-
-//		}
-//		return completeDecadeList;
-//	}
 	public TrackList getAllTracks(String bpm) {
 		Map<String, String> params = new HashMap<>();
 		params.put("bpm", bpm);
