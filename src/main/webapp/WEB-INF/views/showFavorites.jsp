@@ -18,14 +18,10 @@
 	<h1>Your Favorite Tracks:</h1>
 	<table class=table>
 
-		<c:set var="count" value="${count}" />
-		<c:if test="${count < 1}">
-			<p>Favorites is empty!
-			<p>
-		</c:if>
+
 		<thead>
 			<tr>
-				<th> </th>
+				<th></th>
 				<th>Song</th>
 				<th>Artist</th>
 			</tr>
@@ -35,7 +31,7 @@
 			<c:forEach var="track" items="${favorites}">
 
 				<tr>
-					<td><img src= "${track.cover}" alt= "picture of album cover"></td>
+					<td><img src="${track.cover}" alt="picture of album cover"></td>
 
 					<td>${track.trackName}</td>
 					<td>${track.artist}</td>
@@ -49,9 +45,17 @@
 		</tbody>
 
 	</table>
+	<c:set var="count" value="${count}" />
+	<c:if test="${count < 1}">
+		<p>
+			Favorites is empty! <p>
+		
+	</c:if>
 
-	<a href="/" class="button">Find More New Music</a>
+	<a href="/" class="button">Find More New
+				Music</a>
 
 
-</body>
+
+		</body>
 </html>
